@@ -1,9 +1,14 @@
 {
-  "name": "card-components",
-  "private": true,
+  "name": "deck-card-layer",
   "type": "module",
   "version": "0.1.0",
   "main": "./nuxt.config.ts",
+  "exports": {
+    ".": {
+      "import": "./nuxt.config.ts",
+      "require": "./nuxt.config.ts"
+    }
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -14,15 +19,22 @@
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.73",
-    "@iconify-json/simple-icons": "^1.2.58",
+    "@iconify-json/simple-icons": "^1.2.58"
+  },
+  "peerDependencies": {
     "@nuxt/ui": "^4.1.0",
     "nuxt": "^4.2.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.10.0",
+    "@nuxt/ui": "^4.1.0",
     "eslint": "^9.39.1",
+    "nuxt": "^4.2.1",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.1.3"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "packageManager": "pnpm@10.21.0"
 }

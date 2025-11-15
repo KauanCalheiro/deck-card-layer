@@ -1,0 +1,10 @@
+# Exclude local playground and build artefacts from the published package
+app/pages/
+.nuxt/
+.output/
+node_modules/
+pnpm-lock.yaml
+pnpm-workspace.yaml
+# Editor/OS junk
+.vscode/
+.DS_Store
