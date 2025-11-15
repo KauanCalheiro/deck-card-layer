@@ -39,6 +39,15 @@ export function useDeck() {
     deck.value = shuffle(deck.value)
   }
 
+  function drawCard() {
+    const card = deck.value.shift()
+    if (!card) {
+      throw new Error('Não há cartas restantes no baralho.')
+    }
+
+    return card
+  }
+
   function dealHands(playerCount: number, cardsPerPlayer?: number) {
     if (!Number.isInteger(playerCount) || playerCount <= 0) {
       throw new Error('playerCount precisa ser um inteiro positivo.')
@@ -81,6 +90,7 @@ export function useDeck() {
     hands,
     resetDeck,
     shuffleDeck,
+    drawCard,
     dealHands
   }
 }
