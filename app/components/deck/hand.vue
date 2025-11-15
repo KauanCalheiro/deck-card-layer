@@ -6,7 +6,8 @@ export interface DeckHandProps {
   spreadAngle?: number
   spacing?: number
   preset?: Preset
-  faceDown?: boolean
+  flipped?: boolean
+  hoverable?: boolean
   scale?: number
 }
 
@@ -15,7 +16,8 @@ const {
   spreadAngle = 60,
   spacing = 8,
   preset,
-  faceDown = false,
+  flipped = false,
+  hoverable = false,
   scale = 1
 } = defineProps<DeckHandProps>()
 
@@ -79,14 +81,14 @@ const getCardStyle = (index: number, translateX: number, translateY: number, ang
           :key="`${card.suit}-${card.value}-${index}`"
           class="card-container absolute bottom-0 left-1/2 origin-bottom cursor-pointer transition-transform duration-200"
           :style="getCardStyle(index, translateX, translateY, angle, zIndex)"
-          @mouseenter="hoveredIndex = index"
-          @mouseleave="hoveredIndex = null"
+          @mouseenter="hoverable ? (hoveredIndex = index) : null"
+          @mouseleave="hoverable ? (hoveredIndex = null) : null"
         >
           <Card
             :suit="card.suit"
             :value="card.value"
             :preset="preset"
-            :flipped="faceDown"
+            :flipped="flipped"
             :scale="scale"
           />
         </div>

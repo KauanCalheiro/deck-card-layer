@@ -4,14 +4,14 @@ import type { Card as CardModel, Preset } from '~/types/card'
 export interface DeckProps {
   cards: CardModel[]
   preset?: Preset
-  faceDown?: boolean
+  flipped?: boolean
   maxVisible?: number
   scale?: number
 }
 
 const {
   cards,
-  faceDown = true,
+  flipped = true,
   maxVisible = 5,
   scale = 1,
   preset
@@ -47,8 +47,8 @@ const visibleCards = computed(() => {
 const topCard = computed(() => cards?.[cards.length - 1])
 
 const isHovered = ref(false)
-const hoverLiftY = -12
-const hoverLiftX = 24
+const hoverLiftY = -6
+const hoverLiftX = 6
 const hoverPullZ = 10
 const hoverTilt = 1.5
 
@@ -107,33 +107,23 @@ const handleDeal = () => {
             :suit="card.suit"
             :value="card.value"
             :preset="preset"
-            :flipped="faceDown"
+            :flipped="flipped"
           />
         </div>
       </TransitionGroup>
-    </div>
-    <div
-      class="deck-counter"
-      aria-live="polite"
-    >
-      {{ cards?.length ?? 0 }} cartas
     </div>
   </div>
 </template>
 
 <style scoped>
 .deck-stack {
-  position: relative;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  padding: 1rem 2rem;
+  gap: 0.5rem;
   border-radius: 1rem;
-  background: linear-gradient(145deg, #1f1f2c, #13131d);
-  perspective: 1200px;
-  cursor: pointer;
   transition: transform 150ms ease;
+  width: fit-content;
 }
 
 .deck-stack:focus-visible {

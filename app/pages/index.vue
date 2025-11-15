@@ -85,7 +85,7 @@ const dealtCards = ref<CardModel[]>([])
 
 const deckSettings = reactive({
   preset: 'golden-dark' as Preset,
-  faceDown: true,
+  flipped: true,
   maxVisible: 6,
   scale: 1
 })
@@ -183,7 +183,7 @@ const handSettings = reactive({
   spreadAngle: 70,
   spacing: 10,
   scale: 1,
-  faceDown: false
+  flipped: false
 })
 
 const selectedHandHint = computed(() => handScenarios[selectedHandScenario.value].hint)
@@ -370,9 +370,9 @@ function selectHandScenario(key: HandScenarioKey) {
               <button
                 type="button"
                 class="px-3 py-1 rounded-full border border-white/20 text-xs"
-                @click="deckSettings.faceDown = !deckSettings.faceDown"
+                @click="deckSettings.flipped = !deckSettings.flipped"
               >
-                {{ deckSettings.faceDown ? 'Virado para baixo' : 'Virado para cima' }}
+                {{ deckSettings.flipped ? 'Virado para baixo' : 'Virado para cima' }}
               </button>
             </div>
 
@@ -420,7 +420,7 @@ function selectHandScenario(key: HandScenarioKey) {
             <Deck
               :cards="deckCards"
               :preset="deckSettings.preset"
-              :face-down="deckSettings.faceDown"
+              :face-down="deckSettings.flipped"
               :max-visible="deckSettings.maxVisible"
               :scale="deckSettings.scale"
               @deal="handleDeckDeal"
@@ -545,9 +545,9 @@ function selectHandScenario(key: HandScenarioKey) {
             <button
               type="button"
               class="w-full px-4 py-3 rounded-2xl border border-white/15 hover:border-white/40 transition"
-              @click="handSettings.faceDown = !handSettings.faceDown"
+              @click="handSettings.flipped = !handSettings.flipped"
             >
-              {{ handSettings.faceDown ? 'Mostrar frente' : 'Virar todas' }}
+              {{ handSettings.flipped ? 'Mostrar frente' : 'Virar todas' }}
             </button>
           </div>
         </div>
@@ -558,7 +558,7 @@ function selectHandScenario(key: HandScenarioKey) {
             :spread-angle="handSettings.spreadAngle"
             :spacing="handSettings.spacing"
             :preset="handSettings.preset"
-            :face-down="handSettings.faceDown"
+            :face-down="handSettings.flipped"
             :scale="handSettings.scale"
           />
           <p class="text-sm text-white/60">
@@ -567,7 +567,7 @@ function selectHandScenario(key: HandScenarioKey) {
           <div class="flex flex-wrap justify-center gap-4 text-xs text-white/50">
             <span>{{ handCards.length }} cartas</span>
             <span>Preset {{ presetLabels[handSettings.preset] }}</span>
-            <span>{{ handSettings.faceDown ? 'Verso exibido' : 'Frente exibida' }}</span>
+            <span>{{ handSettings.flipped ? 'Verso exibido' : 'Frente exibida' }}</span>
           </div>
         </div>
       </div>
