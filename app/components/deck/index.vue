@@ -7,14 +7,16 @@ export interface DeckProps {
   flipped?: boolean
   maxVisible?: number
   scale?: number
+  hoverable?: boolean
 }
 
 const {
   cards,
+  preset,
   flipped = true,
   maxVisible = 5,
   scale = 1,
-  preset
+  hoverable = false
 } = defineProps<DeckProps>()
 
 const emit = defineEmits<{ (event: 'deal', card: CardModel): void }>()
@@ -88,8 +90,8 @@ const handleDeal = () => {
     @click="handleDeal"
     @keyup.enter.prevent="handleDeal"
     @keyup.space.prevent="handleDeal"
-    @mouseenter="isHovered = true"
-    @mouseleave="isHovered = false"
+    @mouseenter="hoverable ? (isHovered = true) : null"
+    @mouseleave="hoverable ? (isHovered = false) : null"
   >
     <div class="deck-card-area">
       <TransitionGroup name="deck-card">
