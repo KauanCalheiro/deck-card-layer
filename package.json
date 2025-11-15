@@ -1,7 +1,9 @@
 {
-  "name": "nuxt-app",
+  "name": "card-components",
   "private": true,
   "type": "module",
+  "version": "0.1.0",
+  "main": "./nuxt.config.ts",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
