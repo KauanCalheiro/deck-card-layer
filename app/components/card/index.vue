@@ -20,6 +20,7 @@ const CardFacade = computed(() => (flipped ? CardBack : CardFront));
 
 <template>
   <div
+    :key="`${suit}-${value}-${preset}`"
     class="w-24 h-32 flex flex-col justify-between"
     :style="{ transform: `scale(${scale})` }"
   >
