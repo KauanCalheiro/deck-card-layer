@@ -11,8 +11,17 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  app: {
+    baseURL: '/deck-card-layer/',
+    buildAssetsDir: 'assets'
+  },
+
   routeRules: {
-    '/': { prerender: true }
+    '/**': { prerender: true }
+  },
+
+  nitro: {
+    preset: 'github_pages'
   },
 
   compatibilityDate: '2025-01-15',
