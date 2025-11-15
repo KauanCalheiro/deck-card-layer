@@ -44,7 +44,7 @@ export interface Card {
 
 export type Pattern = 'diagonal' | 'grid' | 'circles' | 'waves';
 
-export type Preset = 'classic' | 'white' | 'black';
+export type Preset = 'classic' | 'white' | 'black' | 'golden-dark' | 'silver-light';
 
 export type CardStyles = {
   front: {
@@ -141,8 +141,56 @@ export const BLACK_PRESET: CardStyles = {
   },
 };
 
+export const GOLDEN_DARK_PRESET: CardStyles = {
+  front: {
+    background: '#111111',
+    color: {
+      heart: '#f9b324',
+      diamond: '#f9b324',
+      club: '#f9b324',
+      spade: '#f9b324',
+    },
+  },
+  back: {
+    icon: {
+      name: 'mdi:crown', color: '#f9b324'
+    },
+    background: '#111111',
+    pattern: 'circles'
+  },
+  border: {
+    color: '#f9b324',
+    size: '1.5px'
+  },
+};
+
+const SILVER_LIGHT_PRESET: CardStyles = {
+  front: {
+    background: '#FFF',
+    color: {
+      heart: '#989898',
+      diamond: '#989898',
+      club: '#989898',
+      spade: '#989898',
+    },
+  },
+  back: {
+    icon: {
+      name: 'mdi:crown', color: '#C0C0C0'
+    },
+    background: '#FFF',
+    pattern: 'circles'
+  },
+  border: {
+    color: '#C0C0C0',
+    size: '2px'
+  },
+};
+
 export const STYLE: Record<Preset, CardStyles> = {
   classic: CLASSIC_PRESET,
   white: WHITE_PRESET,
   black: BLACK_PRESET,
+  "golden-dark": GOLDEN_DARK_PRESET,
+  "silver-light": SILVER_LIGHT_PRESET,
 }

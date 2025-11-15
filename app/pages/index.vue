@@ -27,6 +27,20 @@ import { WHITE_PRESET } from '~/types/card';
       <Card suit="club" value="A" flipped preset="black"/>
     </div>
 
+    <div class="flex gap-4">
+      <Card suit="heart" value="A" preset="golden-dark"/>
+      <Card suit="heart" value="A" flipped preset="golden-dark"/>
+      <Card suit="club" value="A" preset="golden-dark"/>
+      <Card suit="club" value="A" flipped preset="golden-dark"/>
+    </div>
+
+    <div class="flex gap-4">
+      <Card suit="heart" value="A" preset="silver-light"/>
+      <Card suit="heart" value="A" flipped preset="silver-light"/>
+      <Card suit="club" value="A" preset="silver-light"/>
+      <Card suit="club" value="A" flipped preset="silver-light"/>
+    </div>
+
 
   </div>
 </template>
