@@ -3,14 +3,17 @@ import { CardBack, CardFront } from '#components';
 import type { Value, Suit, Preset } from '~/types/card';
 
 export interface CardProps {
-  value: Value;
-  suit: Suit;
+  value?: Value;
+  suit?: Suit;
   flipped?: boolean;
   scale?: number;
   preset?: Preset;
 }
 
 const {
+  value,
+  suit,
+  preset = 'classic',
   flipped = false,
   scale = 1,
 } = defineProps<CardProps>();

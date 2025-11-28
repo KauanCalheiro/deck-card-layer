@@ -21,6 +21,14 @@ const {
   scale = 1
 } = defineProps<DeckHandProps>()
 
+const emit = defineEmits<{
+  click: [card: CardModel, index: number]
+}>()
+
+const handleclick = (card: CardModel, index: number) => {
+  emit('click', card, index)
+}
+
 const hoveredIndex = ref<number | null>(null)
 const hoverLift = 20
 
@@ -83,6 +91,7 @@ const getCardStyle = (index: number, translateX: number, translateY: number, ang
           :style="getCardStyle(index, translateX, translateY, angle, zIndex)"
           @mouseenter="hoverable ? (hoveredIndex = index) : null"
           @mouseleave="hoverable ? (hoveredIndex = null) : null"
+          @click="handleclick(card, index)"
         >
           <Card
             :suit="card.suit"

@@ -2,7 +2,7 @@
 import type { Card as CardModel, Preset } from '~/types/card'
 
 export interface DeckProps {
-  cards: CardModel[]
+  cards: CardModel[] | undefined
   preset?: Preset
   flipped?: boolean
   maxVisible?: number
@@ -12,7 +12,7 @@ export interface DeckProps {
 
 const {
   cards,
-  preset,
+  preset = 'classic',
   flipped = true,
   maxVisible = 5,
   scale = 1,
@@ -96,6 +96,7 @@ const handleDeal = () => {
     <div class="deck-card-area">
       <TransitionGroup name="deck-card">
         <div
+          v-if="cards"
           v-for="({ card, translateY, translateZ, rotateX, rotateY, zIndex, isTop }) in visibleCards"
           :key="`${card.suit}-${card.value}-${zIndex}`"
           class="deck-card"
@@ -108,6 +109,16 @@ const handleDeal = () => {
           <Card
             :suit="card.suit"
             :value="card.value"
+            :preset="preset"
+            :flipped="flipped"
+          />
+        </div>
+        <div
+          v-else
+          class="deck-card"
+          :style="getCardStyle(0, 0, 0, 0, 100, false)"
+        >
+          <Card
             :preset="preset"
             :flipped="flipped"
           />
