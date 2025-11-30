@@ -39,7 +39,7 @@ export function useDeck() {
     deck.value = shuffle(deck.value)
   }
 
-  function drawCard() {
+  function drawCard(): Card {
     const card = deck.value.shift()
     if (!card) {
       throw new Error('Não há cartas restantes no baralho.')

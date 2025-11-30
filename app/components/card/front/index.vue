@@ -10,14 +10,14 @@ const {
 
 const style = STYLE[preset];
 
-const icon = computed(() => SUIT_ICON[suit]);
+const icon = computed(() => suit ? SUIT_ICON[suit] : undefined);
 </script>
 
 <template>
   <div
     class="flex flex-col h-full justify-between"
     :style="{
-      'color': style.front.color?.[suit],
+      'color': style.front.color?.[suit ?? 'club'],
       'background': style.front.background,
       'border-color': style.border.color,
       'border-width': style.border.size,
@@ -25,17 +25,19 @@ const icon = computed(() => SUIT_ICON[suit]);
   >
 
     <CardFrontCorner
+      v-if="value"
       :value="value"
-      :icon="icon"
+      :icon="icon!"
     />
 
     <div class="flex w-full justify-center items-center text-4xl">
-      <UIcon :name="icon" />
+      <UIcon v-if="suit" :name="icon!" />
     </div>
 
     <CardFrontCorner
+      v-if="value"
       :value="value"
-      :icon="icon"
+      :icon="icon!"
       class="rotate-180"
     />
 
